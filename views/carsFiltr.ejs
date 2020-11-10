@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cars</title>
+    <link rel="stylesheet" href="/css/styleForSearching.css">
+    <script src="/js/registerAnimation.js"></script>
+    <script src="/js/selectAnimation.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="/"><img src="/img/import-logo1.png" alt="logo"></a>
+        </div>
+        <form action="/carSearching" method="POST">
+            <section>
+            <section style="display: flex; width: 100%; justify-content: space-between; align-items: center;">
+                <select name="country" id="firstSelect" onchange="f1()">
+                    <option value=""></option>
+                    <option value="<%= country %>"><%= country %></option>
+                    <option value="<%= c1 %>"><%= c1 %></option>
+                    <option value="<%= c2 %>"><%= c2 %></option>
+                </select>
+                <select name="brand" id="secondSelect" disabled onchange="f2()">
+                    <option value=""></option>
+                    <option value="<%= brand %>"><%= brand %></option>
+                </select>
+                <select name="model" id="thirdSelect" disabled>
+                    <option value=""></option>
+                    <option value="<%= model %>"><%= model %></option>
+                </select>
+            </section>
+            <section style="display: flex; justify-content: space-between;">
+                <section style="display: flex; flex-direction: column;">
+                    <input type="number" value="<%= priceFrom %>" placeholder="Price From" name="priceFrom">
+                    <input type="number" value="<%= priceTo %>" placeholder="Price To" name="priceTo">
+                </section>
+                <section style="display: flex; flex-direction: column;">
+                    <input type="number" value="<%= powerFrom %>" placeholder="Power From" name="powerFrom">
+                    <input type="number" value="<%= powerTo %>" placeholder="Power To" name="powerTo">
+                </section>
+                <section style="display: flex; flex-direction: column;">
+                    <input type="number" value="<%= mileageFrom %>" placeholder="Mileage From" name="mileageFrom">
+                    <input type="number" value="<%= mileageTo %>" placeholder="Mileage To" name="mileageTo">
+                </section>
+            </section>
+            </section>
+            <button style="justify-self: center; margin-top: 10px;" type="submit">Search</button>
+        </form>
+        <div class="register">
+            <% if(isLogin) { %>
+            <form action="/logout" method="post">
+            <span style="margin-bottom: 30px;">Hi <%= username %>!</span>
+            <button class="btn-log-out">Log out<div></div></button>
+            </form>
+            <% } else { %>
+            <button class="btn-log-in" onclick="switchOnLoginForm()">Log in<div></div></button>
+            <button class="btn-sign-in" onclick="switchOnSigninForm()">Sign in<div></div></button>
+            <% } %>
+        </div>
+    </header>
+    <main>
+        <% for(var i=0; i<=numberRows-1; i++) { %>
+        <a href="/articlePage/<%= parametersArray[i].id %>">
+        <div class="car-article">
+            <svg height="600px" width="2000px">
+                <polygon points="0,0 0,600 1600,600 2000,0"/>
+            </svg>
+            <img src="<%= parametersArray[i].img %>" alt="car-image">
+            <div class="parameters">
+                <ul>
+                    <li>Country: <%= parametersArray[i].country %></li>
+                    <li>Brand: <%= parametersArray[i].brand %></li>
+                    <li>Model: <%= parametersArray[i].model %></li>
+                    <li>Price: <%= parametersArray[i].price %> $</li>
+                    <li>Power: <%= parametersArray[i].power %> HP</li>
+                    <li>Mileage: <%= parametersArray[i].mileage %> KM</li>
+                </ul>
+            </div>
+        </div>
+        </a>
+        <% } %>
+    </main>
+    <footer>
+        <ul>
+            <li><a>Phone number: +48 123 456 789</a></li>
+            <li><a>E-mail: contact@contact.pl</a></li>
+            <li><a>Address: City 205 street</a></li>
+        </ul>
+        <ul>
+            <li><a>FAQs</a></li>
+            <li><a>Payment Options</a></li>
+            <li><a>Why choose us</a></li>
+            <li><a>How to buy</a></li>
+            <li><a>About us</a></li>
+        </ul>
+        <ul>
+            <li class="facebook"><a>Facebook</a></li>
+            <li class="instagram"><a>Instagram</a></li>
+            <li class="twitter"><a>Twitter</a></li>
+            <li class="youtube"><a>YouTube</a></li>
+        </ul>
+    </footer>
+
+
+    <form id="login-form" class="login-form" action="/login" method="post">
+        <div>Login:<input autofocus="" type="text" name="login"></div><br>
+        <div>Password:<input type="password" name="password"></Password:></div><br>
+        <button class="login-form-submit-btn" type="submit">Log in</button><br>
+        <% if (incorrectP && !isLogin) { %>
+            <span style="font-size: .7em;">Incorrect Login, Password or both!</span>
+        <% } else if (enterP) {%>
+            <span style="font-size: .7em;">Enter your Login, Password!</span>
+        <% }%>
+    </form>
+    <form id="signin-form" class="signin-form" action="/signin" method="post">
+        <div>Login: <input type="text" name="login"></div><br>
+        <div>Password: <input type="password" name="password"></div><br>
+        <div>Confirm Password: <input type="password" name="password1"></div><br>
+        <div>E-mail: <input type="text" name="email"></div><br>
+        <div>Birth: <input type="date" name="birth"></div><br>
+        <button class="signin-form-submit-btn" type="submit">Sign in</button>
+        <% if (enterR) { %>
+            <span style="font-size: .7em;">Enter your data!</span>
+        <% } else if (otherPasswd) {%>
+            <span style="font-size: .7em;">Paswords vary!</span>
+        <% } else if (busyLogin) {%>
+            <span style="font-size: .7em;">Login is busy!</span>
+        <% }%>
+    </form>
+    <div id="to-back"></div>
+</body>
+</html>

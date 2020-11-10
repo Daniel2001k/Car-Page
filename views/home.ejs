@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import Exclusive Cars</title>
+    <link rel="stylesheet" href="/css/styleForHomePage.css">
+    <script src="/js/registerAnimation.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="/"><img src="/img/import-logo1.png" alt="logo"></a>
+        </div>
+        <nav class="navigation">
+            <ul class="unordered-list-main unordered-list-first-level">
+                <li class="list-item-germany list-item-first-level">
+                    <a class="brandAnchor" href="carsfiltrGermany">Germany<div></div></a>
+                    <ul class="unordered-list-germany unordered-list-second-level">
+                        <li class="list-item-second-level"><a class="brandAnchor" href="carsfiltrGermanyAudi">Audi<div></div></a></li>
+                        <li class="list-item-second-level"><a class="brandAnchor" href="carsfiltrGermanyBmw">Bmw<div></div></a></li>
+                        <li class="list-item-second-level"><a class="brandAnchor" href="carsfiltrGermanyMercedesBenz">Mercedes-Benz<div></div></a></li>
+                    </ul>
+                </li>
+                <li class="list-item-japan list-item-first-level">
+                    <a class="brandAnchor" href="carsfiltrJapan">Japan<div></div></a>
+                    <ul class="unordered-list-japan unordered-list-second-level">
+                        <li class="list-item-second-level"><a class="brandAnchor" href="carsfiltrJapanNissan">Nissan<div></div></a></li>
+                        <li class="list-item-second-level"><a class="brandAnchor" href="carsfiltrJapanToyota">Toyota<div></div></a></li>
+                        <li class="list-item-second-level"><a class="brandAnchor" href="carsfiltrJapanMazda">Mazda<div></div></a></li>
+                        <li class="list-item-second-level"><a class="brandAnchor" href="carsfiltrJapanSubaru">Subaru<div></div></a></li>
+                        <li class="list-item-second-level"><a class="brandAnchor" href="carsfiltrJapanMitsubishi">Mitsubishi<div></div></a></li>
+                    </ul>
+                </li>
+                <li class="list-item-usa list-item-first-level">
+                    <a class="brandAnchor" href="carsfiltrUsa">USA<div></div></a>
+                    <ul class="unordered-list-usa unordered-list-second-level">
+                        <li class="list-item-second-level"><a class="brandAnchor" href="carsfiltrUsaDodge">Dodge<div></div></a></li>
+                        <li class="list-item-second-level"><a class="brandAnchor" href="carsfiltrUsaFord">Ford<div></div></a></li>
+                        <li class="list-item-second-level"><a class="brandAnchor" href="carsfiltrUsaChevrolet">Chevrolet<div></div></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="register">
+            <% if(isLogin) { %>
+            <span>Hi <%= username %>!</span>
+            <form action="/logout" method="post">
+            <button class="btn-log-out">Log out<div></div></button>
+            </form>
+            <% } else { %>
+            <button class="btn-log-in" onclick="switchOnLoginForm()">Log in<div></div></button>
+            <button class="btn-sign-in" onclick="switchOnSigninForm()">Sign in<div></div></button>
+            <% } %>
+        </div>
+    </header>
+    <main>
+        <a href="/articlePage/<%= carInformation1.id %>" class="frames-main frame-1st">
+            <img class="img-1st" src="<%= carInformation1.img %>" alt="car">
+            <div class="price">
+                <% if (carInformation1.brand != 'dontDesplayThat' && carInformation1.model != 'dontDesplayThat' && carInformation1.price != 'dontDesplayThat') { %>
+                    <p>Brand: <%= carInformation1.brand %></p>
+                    <p>Model: <%= carInformation1.model %></p>
+                    <p>Price: <%= carInformation1.price %>$</p>
+                <%} else { %>
+                    <p>lack of information</p>
+                <% } %>
+            </div></a>
+        <a href="/articlePage/<%= carInformation2.id %>" class="frames-main frame-2nd">
+            <img class="img-1st" src="<%= carInformation2.img %>" alt="car">
+            <div class="price">
+                <% if (carInformation2.brand != 'dontDesplayThat' && carInformation2.model != 'dontDesplayThat' && carInformation2.price != 'dontDesplayThat') { %>
+                    <p>Brand: <%= carInformation2.brand %></p>
+                    <p>Model: <%= carInformation2.model %></p>
+                    <p>Price: <%= carInformation2.price %>$</p>
+                <%} else { %>
+                    <p>lack of information</p>
+                <% } %></div></a>
+        <a href="/articlePage/<%= carInformation3.id %>"  class="frames-main frame-3rd">
+            <img class="img-1st" src="<%= carInformation3.img %>" alt="car">
+            <div class="price">
+                <% if (carInformation3.brand != 'dontDesplayThat' && carInformation3.model != 'dontDesplayThat' && carInformation3.price != 'dontDesplayThat') { %>
+                    <p>Brand: <%= carInformation3.brand %></p>
+                    <p>Model: <%= carInformation3.model %></p>
+                    <p>Price: <%= carInformation3.price %>$</p>
+                <%} else { %>
+                    <p>lack of information</p>
+                <% } %>
+            </div></a>
+        <a href="/articlePage/<%= carInformation4.id %>"  class="frames-main frame-4th">
+            <img class="img-1st" src="<%= carInformation4.img %>"-14985.jpg" alt="car">
+            <div class="price">
+                <% if (carInformation4.brand != 'dontDesplayThat' && carInformation4.model != 'dontDesplayThat' && carInformation4.price != 'dontDesplayThat') { %>
+                    <p>Brand: <%= carInformation4.brand %></p>
+                    <p>Model: <%= carInformation4.model %></p>
+                    <p>Price: <%= carInformation4.price %>$</p>
+                <%} else { %>
+                    <p>lack of information</p>
+                <% } %>
+            </div></a>
+        <a href="/articlePage/<%= carInformation5.id %>"  class="frames-main frame-5th">
+            <img class="img-1st" src="<%= carInformation5.img %>" alt="car">
+            <div class="price">
+                <% if (carInformation5.brand != 'dontDesplayThat' && carInformation5.model != 'dontDesplayThat' && carInformation5.price != 'dontDesplayThat') { %>
+                    <p>Brand: <%= carInformation5.brand %></p>
+                    <p>Model: <%= carInformation5.model %></p>
+                    <p>Price: <%= carInformation5.price %>$</p>
+                <%} else { %>
+                    <p>lack of information</p>
+                <% } %>
+            </div></a>
+        <a href="/articlePage/<%= carInformation6.id %>"  class="frames-main frame-6th">
+            <img class="img-1st" src="<%= carInformation6.img %>" alt="car">
+            <div class="price">
+                <% if (carInformation6.brand != 'dontDesplayThat' && carInformation6.model != 'dontDesplayThat' && carInformation6.price != 'dontDesplayThat') { %>
+                    <p>Brand: <%= carInformation6.brand %></p>
+                    <p>Model: <%= carInformation6.model %></p>
+                    <p>Price: <%= carInformation6.price %>$</p>
+                <%} else { %>
+                    <p>lack of information</p>
+                <% } %>
+            </div></a>
+    </main>
+    <footer>
+        <ul>
+            <li><a>Phone number: +48 123 456 789</a></li>
+            <li><a>E-mail: contact@contact.pl</a></li>
+            <li><a>Address: City 205 street</a></li>
+        </ul>
+        <ul>
+            <li><a>FAQs</a></li>
+            <li><a>Payment Options</a></li>
+            <li><a>Why choose us</a></li>
+            <li><a>How to buy</a></li>
+            <li><a>About us</a></li>
+        </ul>
+        <ul>
+            <li class="facebook"><a>Facebook</a></li>
+            <li class="instagram"><a>Instagram</a></li>
+            <li class="twitter"><a>Twitter</a></li>
+            <li class="youtube"><a>YouTube</a></li>
+        </ul>
+    </footer>
+
+    <form id="login-form" class="login-form" action="/login" method="post">
+        <div>Login:<input autofocus="" type="text" name="login"></div><br>
+        <div>Password:<input type="password" name="password"></Password:></div><br>
+        <button class="login-form-submit-btn" type="submit">Log in</button><br>
+        <% if (incorrectP && !isLogin) { %>
+            <span style="font-size: .7em;">Incorrect Login, Password or both!</span>
+        <% } else if (enterP) {%>
+            <span style="font-size: .7em;">Enter your Login, Password!</span>
+        <% }%>
+    </form>
+    <form id="signin-form" class="signin-form" action="/signin" method="post">
+        <div>Login: <input type="text" name="login"></div><br>
+        <div>Password: <input type="password" name="password"></div><br>
+        <div>Confirm Password: <input type="password" name="password1"></div><br>
+        <div>E-mail: <input type="text" name="email"></div><br>
+        <div>Birth: <input type="date" name="birth"></div><br>
+        <button class="signin-form-submit-btn" type="submit">Sign in</button>
+        <% if (enterR) { %>
+            <span style="font-size: .7em;">Enter your data!</span>
+        <% } else if (otherPasswd) {%>
+            <span style="font-size: .7em;">Paswords vary!</span>
+        <% } else if (busyLogin) {%>
+            <span style="font-size: .7em;">Login is busy!</span>
+        <% }%>
+    </form>
+    <div id="to-back"></div>
+</body>
+</html>

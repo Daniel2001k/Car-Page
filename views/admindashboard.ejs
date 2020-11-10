@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/styleForAdmindashboard.css">
+</head>
+<body>
+    <form style="position: absolute; top: 30px; right: 30px;" action="/logout" method="post">
+        <button style="width: 100px; height: 30px;" class="btn-log-out">Log out<div></div></button>
+    </form>
+    <header><h1>Admin Dashboard</h1></header>
+    <nav>
+        <ul>
+            <li><a href="">some options</a></li>
+            <li><a href="">some options</a></li>
+            <li><a href="">some options</a></li>
+            <li><a href="">some options</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <h2 style="align-self: center;justify-self: center;">Add new article</h2>
+            <form action="/addarticle" method="POST">
+                <input type="text" placeholder="brand" name="brand">
+                <input type="text" placeholder="model" name="model">
+                <input type="number" placeholder="price" name="price">
+                <input type="number" placeholder="power" name="power">
+                <input type="number" placeholder="mileage" name="mileage">
+                <input type="file" placeholder="image" name="image">
+                <button type="submit">Add</button>
+            </form>
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <h2 style="align-self: center;justify-self: center;">Delete article</h2>
+            <form action="/deletearticle" method="POST">
+                <input type="number" placeholder="id" name="id">
+                <button type="submit">Delete</button>
+            </form>
+        </section>
+        <section>
+            <h2 style="align-self: center;justify-self: center;">Delete user</h2>
+            <form action="/deleteuser" method="POST">
+                <input type="number" placeholder="id" name="id">
+                <input type="text" placeholder="login" name="login">
+                <button type="submit">Delete</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

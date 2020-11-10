@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= car.brand %></title>
+    <link rel="stylesheet" href="/css/styleForCarsPerformance.css">
+    <script src="/js/countAnimation.js"></script>
+    <script src="/js/registerAnimation.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="/"><img src="/img/import-logo1.png" alt="logo"></a>
+        </div>
+    </header>
+    <main>
+        <img class="car-img" src="<%= car.img %>" alt="car">
+        <section class="parameters" id="main">
+            <section class="left-side">
+                <ul>
+                    <% if (car.country == 'Germany') {%>
+                        <li><img src="/img/Flag_of_germany_800_480.png" alt="Germany"></li>
+                    <% } else if (car.country == 'Japan') {%>
+                        <li><img src="/img/9082f88b2fed71f65245669fcbd719b2.png" alt="Japan"></li>
+                    <% } else if (car.country == 'USA'){ %>
+                        <li><img src="/img/61gnrswHuBL._AC_SL1024_.jpg" alt="USA"></li>
+                    <% } %>
+                    <li><p><%= car.brand %></p></li>
+                    <li><p><%= car.model %></p></li>
+                </ul>
+            </section>
+            <section class="right-side">
+                <ul>
+                    <li>Price: <span id="carPrice"><%= car.price %></span> $</li>
+                    <li>Power: <span id="carPower"><%= car.power %></span> KM</li>
+                    <li>Mileage: <span id="carMileage"><%= car.mileage %></span> KM</li>
+                </ul>
+            </section>
+        </section>
+        <section class="form-section">
+            <% if(isLogin) {%>
+            <form style="width: 100%; height: 100%; display: flex; justify-content: space-around; align-items: center; flex-direction: column;" action="">
+                <p style="color: white; font-size: 4em;">Are you interested in?</p>
+                <button style="color: white; font-size: 4em; background-color: black; border-radius: 100px; border: 2px solid black; cursor: pointer; height: 30%; width: 20%;" type="submit">Yes!</button>
+            </form>
+            <% } else { %>
+            <section style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
+                <button style="margin-right: 5%;" class="btn-log-in" onclick="switchOnLoginForm()">Log in<div></div></button>
+                <button class="btn-sign-in" onclick="switchOnSigninForm()">Sign in<div></div></button>
+            </section>
+            <% } %>
+        </section>
+    </main>
+    <footer>
+        <ul>
+            <li><a>Phone number: +48 123 456 789</a></li>
+            <li><a>E-mail: contact@contact.pl</a></li>
+            <li><a>Address: City 205 street</a></li>
+        </ul>
+        <ul>
+            <li><a>FAQs</a></li>
+            <li><a>Payment Options</a></li>
+            <li><a>Why choose us</a></li>
+            <li><a>How to buy</a></li>
+            <li><a>About us</a></li>
+        </ul>
+        <ul>
+            <li class="facebook"><a>Facebook</a></li>
+            <li class="instagram"><a>Instagram</a></li>
+            <li class="twitter"><a>Twitter</a></li>
+            <li class="youtube"><a>YouTube</a></li>
+        </ul>
+    </footer>
+
+    <form id="login-form" class="login-form" action="/login" method="post">
+        <div>Login:<input autofocus="" type="text" name="login"></div><br>
+        <div>Password:<input type="password" name="password"></Password:></div><br>
+        <button class="login-form-submit-btn" type="submit">Log in</button><br>
+        <% if (incorrectP && !isLogin) { %>
+            <span style="font-size: .7em;">Incorrect Login, Password or both!</span>
+        <% } else if (enterP) {%>
+            <span style="font-size: .7em;">Enter your Login, Password!</span>
+        <% }%>
+    </form>
+    <form id="signin-form" class="signin-form" action="/signin" method="post">
+        <div>Login: <input type="text" name="login"></div><br>
+        <div>Password: <input type="password" name="password"></div><br>
+        <div>Confirm Password: <input type="password" name="password1"></div><br>
+        <div>E-mail: <input type="text" name="email"></div><br>
+        <div>Birth: <input type="date" name="birth"></div><br>
+        <button class="signin-form-submit-btn" type="submit">Sign in</button>
+        <% if (enterR) { %>
+            <span style="font-size: .7em;">Enter your data!</span>
+        <% } else if (otherPasswd) {%>
+            <span style="font-size: .7em;">Paswords vary!</span>
+        <% } else if (busyLogin) {%>
+            <span style="font-size: .7em;">Login is busy!</span>
+        <% }%>
+    </form>
+    <div id="to-back"></div>
+</body>
+</html>
